@@ -104,6 +104,7 @@ export default defineNuxtModule({
     })
 
     // Prerender all non-dynamic page routes when generating app
+    // TODO: Move to unplugin-vue-router
     if (!nuxt.options.dev && nuxt.options._generate) {
       const prerenderRoutes = new Set<string>()
       nuxt.hook('modules:done', () => {
@@ -149,6 +150,7 @@ export default defineNuxtModule({
         layer => resolve(layer.config.srcDir, layer.config.dir?.pages || 'pages')
       )
     }
+    // TODO: fix broken definePageMeta() with unplugin-vue-router
     addVitePlugin(PageMetaPlugin.vite(pageMetaOptions))
     addWebpackPlugin(PageMetaPlugin.webpack(pageMetaOptions))
 
@@ -180,6 +182,7 @@ export default defineNuxtModule({
     })
 
     // Add routes template
+    // TODO: export routes from vue-router/auto
     addTemplate({
       filename: 'routes.mjs',
       async getContents () {
@@ -205,6 +208,7 @@ export default defineNuxtModule({
     nuxt.options.vite.resolve.dedupe = nuxt.options.vite.resolve.dedupe || []
     nuxt.options.vite.resolve.dedupe.push('vue-router')
 
+    // TODO: pass options to unplugin-vue-router
     // Add router options template
     addTemplate({
       filename: 'router.options.mjs',
