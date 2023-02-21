@@ -1,5 +1,6 @@
 import { getCurrentInstance, inject, onUnmounted } from 'vue'
-import type { Router, RouteLocationNormalizedLoaded, NavigationGuard, RouteLocationNormalized, RouteLocationRaw, NavigationFailure, RouteLocationPathRaw } from 'vue-router'
+import type { NavigationGuard, RouteLocationNormalized, RouteLocationRaw, NavigationFailure, RouteLocationPathRaw, Router, RouteLocationNormalizedLoaded } from 'vue-router'
+import type { RouterTyped, useRoute as _useRoute } from 'vue-router/auto'
 import { sendRedirect } from 'h3'
 import { hasProtocol, joinURL, parseURL } from 'ufo'
 import { useNuxtApp, useRuntimeConfig } from '../nuxt'
@@ -9,10 +10,10 @@ import { useState } from './state'
 import { setResponseStatus } from './ssr'
 
 export const useRouter = () => {
-  return useNuxtApp()?.$router as Router
+  return useNuxtApp()?.$router as RouterTyped
 }
 
-export const useRoute = (): RouteLocationNormalizedLoaded => {
+export const useRoute: typeof _useRoute = () => {
   if (getCurrentInstance()) {
     return inject('_route', useNuxtApp()._route)
   }
@@ -20,7 +21,7 @@ export const useRoute = (): RouteLocationNormalizedLoaded => {
 }
 
 export const onBeforeRouteLeave = (guard: NavigationGuard) => {
-  const unsubscribe = useRouter().beforeEach((to, from, next) => {
+  const unsubscribe = (useRouter() as Router).beforeEach((to, from, next) => {
     if (to === from) { return }
     return guard(to, from, next)
   })
@@ -28,7 +29,7 @@ export const onBeforeRouteLeave = (guard: NavigationGuard) => {
 }
 
 export const onBeforeRouteUpdate = (guard: NavigationGuard) => {
-  const unsubscribe = useRouter().beforeEach(guard)
+  const unsubscribe = (useRouter() as Router).beforeEach(guard)
   onUnmounted(unsubscribe)
 }
 
@@ -93,7 +94,7 @@ export const navigateTo = (to: RouteLocationRaw | undefined | null, options?: Na
     return to
   }
 
-  const router = useRouter()
+  const router: Router = useRouter()
 
   if (process.server) {
     const nuxtApp = useNuxtApp()
@@ -147,12 +148,12 @@ export const setPageLayout = (layout: string) => {
   }
   const inMiddleware = isProcessingMiddleware()
   if (inMiddleware || process.server || nuxtApp.isHydrating) {
-    const unsubscribe = useRouter().beforeResolve((to) => {
+    const unsubscribe = (useRouter() as Router).beforeResolve((to) => {
       to.meta.layout = layout
       unsubscribe()
     })
   }
   if (!inMiddleware) {
-    useRoute().meta.layout = layout
+    (useRoute() as RouteLocationNormalizedLoaded).meta.layout = layout
   }
 }

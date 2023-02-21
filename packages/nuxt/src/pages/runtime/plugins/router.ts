@@ -1,14 +1,15 @@
 import { computed, isReadonly, reactive, shallowRef } from 'vue'
 import type {
   NavigationGuard,
-  RouteLocation
+  RouteLocation,
+  Router
 } from 'vue-router'
 import {
   createRouter,
   createWebHistory,
   createMemoryHistory,
   createWebHashHistory
-} from 'vue-router'
+} from 'vue-router/auto'
 import { createError } from 'h3'
 import { withoutBase, isEqual } from 'ufo'
 import { callWithNuxt, defineNuxtPlugin, useRuntimeConfig } from '#app/nuxt'
@@ -17,8 +18,9 @@ import { useRequestEvent } from '#app/composables/ssr'
 import { useState } from '#app/composables/state'
 import { navigateTo } from '#app/composables/router'
 
-// @ts-ignore
-import _routes from '#build/routes'
+// FIXME: remove the generation of routes
+// import _routes from '#build/routes'
+// FIXME: What is this used for? It currently only exports `useRouter()`
 // @ts-ignore
 import routerOptions from '#build/router.options'
 // @ts-ignore
@@ -57,13 +59,13 @@ export default defineNuxtPlugin(async (nuxtApp) => {
     : createMemoryHistory(routerBase)
   )
 
-  const routes = routerOptions.routes?.(_routes) ?? _routes
+  // TODO: figure out
+  // const routes = routerOptions.routes?.(_routes) ?? _routes
 
   const initialURL = process.server ? nuxtApp.ssrContext!.url : createCurrentLocation(routerBase, window.location)
-  const router = createRouter({
+  const router: Router = createRouter({
     ...routerOptions,
-    history,
-    routes
+    history
   })
   nuxtApp.vueApp.use(router)
 

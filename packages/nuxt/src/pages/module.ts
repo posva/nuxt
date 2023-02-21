@@ -4,6 +4,7 @@ import { relative, resolve } from 'pathe'
 import { genString, genImport, genObjectFromRawEntries } from 'knitwork'
 import escapeRE from 'escape-string-regexp'
 import { joinURL } from 'ufo'
+import VueRouter from 'unplugin-vue-router/vite'
 import { distDir } from '../dirs'
 import { resolvePagesRoutes, normalizeRoutes } from './utils'
 import type { PageMetaPluginOptions } from './page-meta'
@@ -18,6 +19,16 @@ export default defineNuxtModule({
     const pagesDirs = nuxt.options._layers.map(
       layer => resolve(layer.config.srcDir, layer.config.dir?.pages || 'pages')
     )
+
+    console.log('👀')
+
+    addVitePlugin(VueRouter({
+      routesFolder: pagesDirs,
+      dts: '.nuxt/typed-router.d.ts',
+      logs: true
+    }), {
+      prepend: true
+    })
 
     // Disable module (and use universal router) if pages dir do not exists or user has disabled it
     const isNonEmptyDir = (dir: string) => existsSync(dir) && readdirSync(dir).length
@@ -60,7 +71,7 @@ export default defineNuxtModule({
     nuxt.hook('imports:sources', (sources) => {
       const routerImports = sources.find(s => s.from === '#app' && s.imports.includes('onBeforeRouteLeave'))
       if (routerImports) {
-        routerImports.from = 'vue-router'
+        routerImports.from = 'vue-router/auto'
       }
     })
 
@@ -126,7 +137,7 @@ export default defineNuxtModule({
     nuxt.hook('imports:extend', (imports) => {
       imports.push(
         { name: 'definePageMeta', as: 'definePageMeta', from: resolve(runtimeDir, 'composables') },
-        { name: 'useLink', as: 'useLink', from: 'vue-router' }
+        { name: 'useLink', as: 'useLink', from: 'vue-router/auto' }
       )
     })
 
