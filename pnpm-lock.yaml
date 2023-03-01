@@ -452,7 +452,7 @@ importers:
       unhead: ^1.1.16
       unimport: ^3.0.2
       unplugin: ^1.1.0
-      unplugin-vue-router: ^0.5.0
+      unplugin-vue-router: ^0.5.1
       untyped: ^1.2.2
       vue: 3.2.47
       vue-bundle-renderer: ^1.0.2
@@ -498,7 +498,7 @@ importers:
       unhead: 1.1.16
       unimport: 3.0.2
       unplugin: 1.1.0
-      unplugin-vue-router: 0.5.0_lavcef455lp3wtm2mcdrwhgymm
+      unplugin-vue-router: 0.5.1_lavcef455lp3wtm2mcdrwhgymm
       untyped: 1.2.2
       vue: 3.2.47
       vue-bundle-renderer: 1.0.2
@@ -897,13 +897,13 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/template': 7.20.7
-      '@babel/types': 7.21.0
+      '@babel/types': 7.21.2
 
   /@babel/helper-hoist-variables/7.18.6:
     resolution: {integrity: sha512-UlJQPkFqFULIcyW5sbzgbkxn2FKRgwWiRexcuaR8RNJRy8+LLveqPjwZV/bwrLZCN0eUHD/x8D0heK1ozuoo6Q==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.0
+      '@babel/types': 7.21.2
 
   /@babel/helper-member-expression-to-functions/7.20.7:
     resolution: {integrity: sha512-9J0CxJLq315fEdi4s7xK5TQaNYjZw+nDVpVqr1axNGKzdrdwYBD5b4uKv3n75aABG0rCCTK8Im8Ww7eYfMrZgw==}
@@ -915,7 +915,7 @@ packages:
     resolution: {integrity: sha512-0NFvs3VkuSYbFi1x2Vd6tKrywq+z/cLeYC/RJNFrIX/30Bf5aiGYbtvGXolEktzJH8o5E5KJ3tT+nkxuuZFVlA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.0
+      '@babel/types': 7.21.2
 
   /@babel/helper-module-transforms/7.21.0:
     resolution: {integrity: sha512-eD/JQ21IG2i1FraJnTMbUarAUkA7G988ofehG5MDCRXaUU91rEBJuCeSoou2Sk1y4RbLYXzqEg1QLwEmRU4qcQ==}
@@ -959,7 +959,7 @@ packages:
     resolution: {integrity: sha512-+0woI/WPq59IrqDYbVGfshjT5Dmk/nnbdpcF8SnMhhXObpTq2KNBdLFRFrkVdbDOyUmHBCxzm5FHV1rACIkIbA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.0
+      '@babel/types': 7.21.2
 
   /@babel/helper-skip-transparent-expression-wrappers/7.20.0:
     resolution: {integrity: sha512-5y1JYeNKfvnT8sZcK9DVRtpTbGiomYIHviSP3OQWmDPU3DeH4a1ZlT/N2lyQ5P8egjcRaT/Y9aNqUxK0WsnIIg==}
@@ -971,7 +971,7 @@ packages:
     resolution: {integrity: sha512-bde1etTx6ZyTmobl9LLMMQsaizFVZrquTEHOqKeQESMKo4PlObf+8+JA25ZsIpZhT/WEd39+vOdLXAFG/nELpA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/types': 7.21.0
+      '@babel/types': 7.21.2
 
   /@babel/helper-string-parser/7.19.4:
     resolution: {integrity: sha512-nHtDoQcuqFmwYNYPz3Rah5ph2p8PFeFCsZk9A/48dPc/rGocJ5J3hAAZ7pb76VWX3fZKu+uEr/FhH5jLx7umrw==}
@@ -1072,6 +1072,14 @@ packages:
 
   /@babel/types/7.21.0:
     resolution: {integrity: sha512-uR7NWq2VNFnDi7EYqiRz2Jv/VQIu38tu64Zy8TX2nQFQ6etJ9V/Rr2msW8BS132mum2rL645qpDrLtAJtVpuow==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/helper-string-parser': 7.19.4
+      '@babel/helper-validator-identifier': 7.19.1
+      to-fast-properties: 2.0.0
+
+  /@babel/types/7.21.2:
+    resolution: {integrity: sha512-3wRZSs7jiFaB8AjxiiD+VqN5DTG2iRvJGQ+qYFrs/654lg6kGTQWIOFjlBo5RaXuAZjBmP3+OQH4dmhqiiyYxw==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/helper-string-parser': 7.19.4
@@ -2684,8 +2692,8 @@ packages:
       '@volar/vue-language-core': 1.2.0
     dev: true
 
-  /@vue-macros/common/1.0.1_vue@3.2.47:
-    resolution: {integrity: sha512-61rD1NEqSwTJaZgHwOr//nyfWNow6dFdcuTJegOKiKY+Y4Xu+uTsBDhHDo+M7Rp+ZxjCS6DNThn24wP+8e+QmA==}
+  /@vue-macros/common/1.1.0_vue@3.2.47:
+    resolution: {integrity: sha512-BvreSru0kh6q/PFAt4erTY29buoVzLoUfXp1nW2cS9PQ589Y76iACw0NcjflXUUxGPRxQkQK+iRx/c4pUj0eeQ==}
     engines: {node: '>=14.19.0'}
     peerDependencies:
       vue: ^2.7.0 || ^3.2.25
@@ -2693,7 +2701,7 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@babel/types': 7.21.0
+      '@babel/types': 7.21.2
       '@vue/compiler-sfc': 3.2.47
       local-pkg: 0.4.3
       magic-string: 0.30.0
@@ -3223,7 +3231,7 @@ packages:
     engines: {node: '>=14.19.0'}
     dependencies:
       '@babel/parser': 7.21.0
-      '@babel/types': 7.21.0
+      '@babel/types': 7.21.2
     dev: false
 
   /async-sema/3.1.1:
@@ -8339,17 +8347,17 @@ packages:
       - vite
     dev: true
 
-  /unplugin-vue-router/0.5.0_lavcef455lp3wtm2mcdrwhgymm:
-    resolution: {integrity: sha512-HxzOMZ4Xc6UnDAVrZSljyKxx+8UX8qp1Ct+gVcaMOz54xK8o+s8gjTTyi3b7+r/DHNiZIT9UIYh4h51TvpR6gA==}
+  /unplugin-vue-router/0.5.1_lavcef455lp3wtm2mcdrwhgymm:
+    resolution: {integrity: sha512-wubx+j4SU5amWKRBt1pYLIEhb3d6gntPeHGErtLqwozNyRVP7A75+XTy523OaeMi6S7Te1Qz3oDD1u9HCbXlAA==}
     peerDependencies:
       vue-router: ^4.1.0
     peerDependenciesMeta:
       vue-router:
         optional: true
     dependencies:
-      '@babel/types': 7.21.0
+      '@babel/types': 7.21.2
       '@rollup/pluginutils': 5.0.2
-      '@vue-macros/common': 1.0.1_vue@3.2.47
+      '@vue-macros/common': 1.1.0_vue@3.2.47
       ast-walker-scope: 0.4.0
       chokidar: 3.5.3
       fast-glob: 3.2.12
