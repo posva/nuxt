@@ -45,6 +45,8 @@ export class EditableRoute {
     }
   }
 
+  // FIXME: I need to create a proxy on children array to work with splice and other functions
+
   get children () {
     return [...this._node].map(node => new EditableRoute(node))
   }
