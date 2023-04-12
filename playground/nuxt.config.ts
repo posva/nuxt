@@ -10,6 +10,7 @@ export default defineNuxtConfig({
   hooks: {
     'pages:extend' (pages) {
       console.log(`✅ Calling pages:extend ${pages.length} pages`)
+      console.log(pages.map(page => page.fullPath))
     },
     'pages:_beforeWrite' (rootPage) {
       rootPage.insert('_new_extend', resolve('./pages/about.vue'))

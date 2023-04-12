@@ -85,7 +85,7 @@
     "unhead": "^1.1.16",
     "unimport": "^3.0.2",
     "unplugin": "^1.1.0",
-    "unplugin-vue-router": "^0.5.1",
+    "unplugin-vue-router": "file:.yalc/unplugin-vue-router",
     "untyped": "^1.2.2",
     "vue": "^3.2.47",
     "vue-bundle-renderer": "^1.0.2",

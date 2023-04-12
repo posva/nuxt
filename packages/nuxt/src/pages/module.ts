@@ -75,6 +75,8 @@ export default defineNuxtModule({
 
     let rootPage: EditableTreeNode | undefined
 
+    console.log('📄 Adding pages module')
+
     addVitePlugin(
       VueRouter({
         routesFolder: pagesDirs,
@@ -86,6 +88,7 @@ export default defineNuxtModule({
         },
         async beforeWriteFiles (_rootPage) {
           await nuxt.callHook('pages:_beforeWrite', _rootPage)
+          await nuxt.callHook('pages:extend', [..._rootPage])
           rootPage = _rootPage
         }
       }),
